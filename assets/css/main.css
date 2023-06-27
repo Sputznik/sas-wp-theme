@@ -21,8 +21,17 @@
 }
 
 .single-post .featured-img {
-  min-height: 300px;
-  display: none;
+  height: 100%;
+  width: 100%;
+  min-height: unset;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.single-post .featured-img::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
 }
 
 .single-post .post-content a {
@@ -98,17 +107,5 @@
   .single-post .col-left,
   .single-post .col-right {
     width: 100%;
-  }
-}
-
-@media(min-width: 960px){
-  .single-post .col-right {
-    margin-top: 30px;
-  }
-}
-
-@media(min-width: 768px){
-  .single-post .featured-img {
-    display: block;
   }
 }

@@ -6,20 +6,15 @@
   $author_bio     = get_the_author_meta( 'description', $post->post_author );
   $thumbnail      = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' )[0];
   $has_thumbnail  = !empty( $thumbnail );
-  $col_class      = $has_thumbnail ? 'col-sm-7': 'col-sm-12';
 ?>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-8 col-left">
       <div class="sas-breadcrumb">
         <span><a class="crumb" href="<?php _e( $home_url );?>">Home</a></span><i class="fa fa-angle-right"></i>
         <span><a class="crumb" href="<?php _e( $home_url.'blog/' );?>">Blog</a></span><i class="fa fa-angle-right"></i>
         <span><?php the_title(); ?></span>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="<?php _e( $col_class ); ?>">
       <div class="sas-single-post-header">
         <span class="meta">
           <?php if( is_array( $categories ) && count( $categories ) ) : ?>
@@ -29,15 +24,9 @@
         <h1 class="post-title"><?php the_title();?></h1>
         <span class="meta text-capitalize">By <?php the_author();?></span>
       </div>
-    </div>
-    <?php if( $has_thumbnail ): ?>
-      <div class="col-sm-5">
+      <?php if( $has_thumbnail ): ?>
         <div class="featured-img orbit-thumbnail-bg" style="background-image:url(<?php _e( $thumbnail ); ?>);"></div>
-      </div>
-    <?php endif;?>
-  </div>
-  <div class="row">
-    <div class="col-sm-8 col-left">
+      <?php endif;?>
       <div class="post-content">
         <?php the_content();?>
         <hr/>
