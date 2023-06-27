@@ -9,6 +9,6 @@
 </div>
 <div class="post-desc">
   <h3 class="post-title"><a href="<?php _e( $permalink );?>"><?php the_title();?></a></h3>
-  <span class="meta text-capitalize">By <?php the_author();?> | <?php the_time( 'F j, Y' );?></span>
+  <span class="meta text-capitalize"><?php the_time( 'F j, Y' );?></span>
   <div class="post-excerpt"><?php the_excerpt(); ?><a class="read-more" href="<?php _e( $permalink );?>">continue reading</a></div>
 </div>
