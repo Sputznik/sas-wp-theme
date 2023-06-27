@@ -6,19 +6,26 @@
   $author_bio     = get_the_author_meta( 'description', $post->post_author );
   $thumbnail      = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' )[0];
   $has_thumbnail  = !empty( $thumbnail );
+  $is_categories_arr  = is_array( $categories ) && count( $categories );
+  $first_cat          = $is_categories_arr ? $categories[0] : false;
+  $first_parent_cat   = $first_cat->parent > 0 ? get_term( $first_cat->parent ) : $first_cat;
 ?>
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-left">
       <div class="sas-breadcrumb">
         <span><a class="crumb" href="<?php _e( $home_url );?>">Home</a></span><i class="fa fa-angle-right"></i>
-        <span><a class="crumb" href="<?php _e( $home_url.'blog/' );?>">Blog</a></span><i class="fa fa-angle-right"></i>
+        <?php if( $is_categories_arr ) :?>
+          <span>
+            <a class="crumb" href="<?php _e( get_category_link( $first_parent_cat->term_id ) );?>"><?php _e( $first_parent_cat->name ); ?></a>
+          </span><i class="fa fa-angle-right"></i>
+        <?php endif; ?>
         <span><?php the_title(); ?></span>
       </div>
       <div class="sas-single-post-header">
         <span class="meta">
-          <?php if( is_array( $categories ) && count( $categories ) ) : ?>
-            <strong><?php _e( $categories[0]->name ); ?></strong> |
+          <?php if( $is_categories_arr ) : ?>
+            <strong><?php _e( $first_cat->name ); ?></strong> |
           <?php endif;?>
           <?php the_time( 'F j, Y' );?></span>
         <h1 class="post-title"><?php the_title();?></h1>
