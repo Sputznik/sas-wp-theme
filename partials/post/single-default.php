@@ -4,8 +4,8 @@
   $has_categories = has_category();
   $categories     = get_the_category( $post->ID );
   $author_bio     = get_the_author_meta( 'description', $post->post_author );
-  $thumbnail      = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' )[0];
-  $has_thumbnail  = !empty( $thumbnail );
+  $thumbnail_id   = get_post_thumbnail_id( $post->ID );
+  $thumbnail_alt  = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
   $is_categories_arr  = is_array( $categories ) && count( $categories );
   $first_cat          = $is_categories_arr ? $categories[0] : false;
   $first_parent_cat   = $first_cat->parent > 0 ? get_term( $first_cat->parent ) : $first_cat;
@@ -31,9 +31,7 @@
         <h1 class="post-title"><?php the_title();?></h1>
         <span class="meta text-capitalize">By <?php the_author();?></span>
       </div>
-      <?php if( $has_thumbnail ): ?>
-        <div class="featured-img orbit-thumbnail-bg" style="background-image:url(<?php _e( $thumbnail ); ?>);"></div>
-      <?php endif;?>
+      <?php the_post_thumbnail( 'full', array( 'class' => 'post-featured-img', 'alt' => $thumbnail_alt ? $thumbnail_alt : 'Featured Image' ) ); ?>
       <div class="post-content">
         <?php the_content();?>
         <hr/>

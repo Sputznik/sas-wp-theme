@@ -1,3 +1,8 @@
+img {
+  width: 100%;
+  height: auto;
+}
+
 /* SINGLE POST */
 #sas-single-post {
   margin: 60px 0;
@@ -20,18 +25,8 @@
   font-weight: 700;
 }
 
-.single-post .featured-img {
-  height: 100%;
-  width: 100%;
-  min-height: unset;
-  position: relative;
-  margin-bottom: 25px;
-}
-
-.single-post .featured-img::before {
-  content: "";
-  display: block;
-  padding-top: 56.25%;
+.single-post .post-featured-img {
+  margin-bottom: 10px;
 }
 
 .single-post .post-content a {
