@@ -96,6 +96,60 @@ img {
   text-decoration: none;
 }
 
+/* ARCHIVE */
+.archive-header {
+  color: #ffffff;
+  margin: 0 auto;
+  padding: 140px 0;
+  background-color: #49080b;
+}
+
+.archive .page-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1.4em;
+}
+
+.archive .page-title::after {
+  content: "";
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  max-width: 150px;
+  margin-top: 15px;
+  border: 2px solid #fff;
+}
+
+.archive .articles-three-grid .orbit-thumbnail-bg {
+  min-height: 200px;
+}
+
+.archive .articles-three-grid .post-title {
+  color: #000000;
+}
+
+.archive .articles-three-grid .meta {
+  color: #f40000;
+}
+
+.archive .articles-three-grid .post-desc {
+  padding-bottom: 30px;
+}
+
+.articles-post-list-wrap {
+  margin: 60px auto;
+}
+
+.articles-post-list-wrap button.load-more {
+  border: 0;
+  color: #ffffff;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: #000000;
+}
+
 /* -------------------------- MEDIA QUERIES ------------------------- */
 
 @media(max-width: 960px){
